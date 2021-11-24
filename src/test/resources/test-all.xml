@@ -3,7 +3,7 @@
 <suite name="AllTest" verbose="1">
     <test name="AllTest">
         <classes>
-            <!--            <class name="AllTest"/>-->
+                        <class name="SmokeTests"/>
 
         </classes>
     </test>

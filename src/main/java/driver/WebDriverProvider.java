@@ -24,10 +24,13 @@ public class WebDriverProvider {
                 case "firefox": {
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
+                    System.out.println("using FIREFOX ------------------------------------------------------");
                 }
                 case "edge": {
                     WebDriverManager.edgedriver().setup();
                     driver = new EdgeDriver();
+                    System.out.println("using EDGE ---------------------------------------------------------");
+
                 }
             }
         } else {

@@ -1,5 +1,5 @@
-/**
- * This class implements Singleton pattern for webdriver instance to create and pass to page classes.
+/*
+  This class implements Singleton pattern for webdriver instance to create and pass to page classes.
  */
 
 package driver;
@@ -30,7 +30,11 @@ public class WebDriverProvider {
                     WebDriverManager.edgedriver().setup();
                     driver = new EdgeDriver();
                     System.out.println("using EDGE ---------------------------------------------------------");
-
+                }
+                case "chrome": {
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                    System.out.println("using CHROME ---------------------------------------------------------");
                 }
             }
         } else {

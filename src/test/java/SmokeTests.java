@@ -22,6 +22,8 @@ public class SmokeTests extends BaseTest {
                 .goToHomePage()
                 .useSearchBar()
                 .makeSearchQuery();
+
+        Assert.assertTrue(redditHomePage.checkIfSearchSucceed(), "Search failed!");
     }
 
 }

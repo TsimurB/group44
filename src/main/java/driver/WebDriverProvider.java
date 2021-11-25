@@ -24,17 +24,17 @@ public class WebDriverProvider {
                 case "firefox": {
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
-                    System.out.println("using FIREFOX ------------------------------------------------------");
+                    System.out.println("LOG POINT- - - - - - - - - - - - - - - - - - - - - - - using FIREFOX");
                 }
                 case "edge": {
                     WebDriverManager.edgedriver().setup();
                     driver = new EdgeDriver();
-                    System.out.println("using EDGE ---------------------------------------------------------");
+                    System.out.println("LOG POINT- - - - - - - - - - - - - - - - - - - - - - - - -using EDGE");
                 }
                 case "chrome": {
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
-                    System.out.println("using CHROME -------------------------------------------------------");
+                    System.out.println("LOG POINT- - - - - - - - - - - - - - - - - - - - - - - -using CHROME");
                 }
             }
             driver.manage().window().maximize();

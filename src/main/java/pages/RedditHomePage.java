@@ -18,23 +18,34 @@ public class RedditHomePage extends BasePage {
 
     public RedditHomePage goToHomePage() {
         driver.get(HOMEURL);
+        System.out.println("LOG POINT- - - - - - - - - - - - - - - - - -navigate to: " + HOMEURL);
         return this;
     }
 
     public RedditHomePage useSearchBar() {
         clickTo(searchBar);
+        System.out.println("LOG POINT- - - - - - - - - - - - - - - - - -use search bar");
         return this;
     }
 
     public RedditHomePage makeSearchQuery() {
         fillIn(searchBar, SEARCHQUERY).pressEnter(searchBar);
+        System.out.println("LOG POINT- - - - - - - - - - - - - - - - - search for: " + SEARCHQUERY);
         return this;
     }
 
     public boolean checkIfIsRedditHomePage() {
+        String expected = "Reddit - Dive into anything";
         String checker = driver.getTitle();
-        System.out.println("title is: " + checker);
-        return checker.contains("Reddit - Dive into anything");
+        System.out.printf("\nLOG POINT- - - - - -asserting title is '%s' --> %s", expected, checker);
+        return checker.contains(expected);
+    }
+
+    public boolean checkIfSearchSucceed() {
+        String expected = "reddit.com: search results - " + SEARCHQUERY;
+        String checker = driver.getTitle();
+        System.out.printf("\nLOG POINT- - - - - -asserting title is '%s' --> %s", expected, checker);
+        return checker.contains(expected);
     }
 
 }

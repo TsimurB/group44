@@ -17,8 +17,8 @@ public class WebDriverProvider {
 
     //private constructor
     private WebDriverProvider() {
-
         String browser = System.getProperty("browser");
+
         if (browser != null) {
             switch (browser) {
                 case "firefox": {
@@ -34,17 +34,12 @@ public class WebDriverProvider {
                 case "chrome": {
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
-                    System.out.println("using CHROME ---------------------------------------------------------");
+                    System.out.println("using CHROME -------------------------------------------------------");
                 }
             }
-        } else {
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-            System.out.println("Using CHROME as default");
+            driver.manage().window().maximize();
+            driver.manage().deleteAllCookies();
         }
-        assert driver != null;
-        driver.manage().window().maximize();
-        driver.manage().deleteAllCookies();
     }
 
     //static method containing unique instance of driver provider

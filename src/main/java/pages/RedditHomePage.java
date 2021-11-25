@@ -31,4 +31,10 @@ public class RedditHomePage extends BasePage {
         return this;
     }
 
+    public boolean checkIfIsRedditHomePage() {
+        String checker = driver.getTitle();
+        System.out.println("title is: " + checker);
+        return checker.contains("Reddit - Dive into anything");
+    }
+
 }

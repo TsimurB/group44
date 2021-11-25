@@ -1,4 +1,6 @@
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.RedditHomePage;
 
 public class SmokeTests extends BaseTest {
@@ -8,7 +10,10 @@ public class SmokeTests extends BaseTest {
 
     @Test
     public void canNavigateToRedditHomePageTest() {
-        redditHomePage.goToHomePage();
+        redditHomePage
+                .goToHomePage();
+
+        Assert.assertTrue(redditHomePage.checkIfIsRedditHomePage(), "This is not a reddit.com !");
     }
 
     @Test

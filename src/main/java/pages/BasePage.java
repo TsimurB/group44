@@ -35,10 +35,11 @@ public abstract class BasePage {
         return this;
     }
 
-    public void pressEnter(WebElement element) {
+    public BasePage pressEnter(WebElement element) {
         WebElement clicker = new WebDriverWait(driver, GLOBALTIMEOUT)
                 .until(ExpectedConditions.elementToBeClickable(element));
         clicker.sendKeys(Keys.ENTER);
+        return this;
     }
 
     public BasePage fillIn(WebElement element, String textToFillIn) {

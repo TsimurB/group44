@@ -1,7 +1,7 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import pages.RedditHomePage;
+
 
 public class SmokeTests extends BaseTest {
 
@@ -10,19 +10,19 @@ public class SmokeTests extends BaseTest {
 
     @Test
     public void canNavigateToRedditHomePageTest() {
+        System.out.println("LOG POINT- - - - - - - - - - -Test 1: canNavigateToRedditHomePageTest");
         redditHomePage
                 .goToHomePage();
-
         Assert.assertTrue(redditHomePage.checkIfIsRedditHomePage(), "This is not a reddit.com !");
     }
 
     @Test
-    public void canUseSearchBarForCustomQueries() {
+    public void canUseSearchBarForCustomQueriesTest() {
+        System.out.println("LOG POINT- - - - - - - - - - -Test 2: canUseSearchBarForCustomQueriesTest");
         redditHomePage
                 .goToHomePage()
                 .useSearchBar()
                 .makeSearchQuery();
-
         Assert.assertTrue(redditHomePage.checkIfSearchSucceed(), "Search failed!");
     }
 

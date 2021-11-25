@@ -4,49 +4,19 @@
 
 package driver;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 
-public class WebDriverProvider {
+
+public class WebDriverProvider extends BrowserFactory {
     private static WebDriverProvider webDriverProvider = null;
     private static WebDriver driver;
 
     //private constructor
     private WebDriverProvider() {
-        String browser = System.getProperty("browser");
-
-        if (browser != null) {
-            switch (browser) {
-                case "firefox": {
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
-                    System.out.println("LOG POINT- - - - - - - - - - - - - - - - - - - - - - - using FIREFOX");
-                }
-                case "edge": {
-                    WebDriverManager.edgedriver().setup();
-                    driver = new EdgeDriver();
-                    System.out.println("LOG POINT- - - - - - - - - - - - - - - - - - - - - - - - -using EDGE");
-                }
-                case "chrome": {
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-                    System.out.println("LOG POINT- - - - - - - - - - - - - - - - - - - - - - - -using CHROME");
-                }
-            }
-            driver.manage().window().maximize();
-            driver.manage().deleteAllCookies();
-        } else {
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-            System.out.println("USING CHROME as default");
-        }
-        assert driver != null;
-        driver.manage().window().maximize();
-        driver.manage().deleteAllCookies();
+        driver = createDriver();
+        System.out.printf("LOG POINT- - - - - - - - - - - - - - - - - -%s driver is in provider class. "
+                , System.getProperty("browser"));
     }
 
     //static method containing unique instance of driver provider
@@ -59,6 +29,7 @@ public class WebDriverProvider {
 
     //public driver instance getter
     public WebDriver getDriver() {
+        System.out.println("Getter method ready.");
         return driver;
     }
 

@@ -6,6 +6,6 @@ public class BaseTest {
     @AfterSuite(alwaysRun = true)
     public void teardown() {
         WebDriverProvider.closeDriver();
+        System.out.println("LOG POINT- - - - - - - - - - -tearing down- - - - - - - - - - -");
     }
-
 }

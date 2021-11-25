@@ -23,9 +23,9 @@ public abstract class BasePage {
     public BasePage() {
         try {
             driver = WebDriverProvider.getWebDriverProvider().getDriver();
-            System.out.println("LOG POINT- - - - - - - - - - - - - - - - - - - - - - - WebDriver OK");
+            System.out.println("LOG POINT- - - - - - - - - - - - - - - - - -WebDriver OK\n");
         } catch (Exception e) {
-            System.out.println("Driver issue!");
+            System.out.println("LOG POINT- - - - - - - - - - - - - - - - - -Driver issue!");
         }
     }
 

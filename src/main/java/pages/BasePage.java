@@ -43,6 +43,11 @@ public abstract class BasePage {
         return this;
     }
 
+    public String waitForTextOf(WebElement element) {
+        return new WebDriverWait(driver, GLOBALTIMEOUT)
+                .until(ExpectedConditions.visibilityOf(element)).getText();
+    }
+
     public BasePage fillIn(WebElement element, String textToFillIn) {
         WebElement typeIn = new WebDriverWait(driver, GLOBALTIMEOUT)
                 .until(ExpectedConditions.visibilityOf(element));

@@ -39,7 +39,14 @@ public class WebDriverProvider {
             }
             driver.manage().window().maximize();
             driver.manage().deleteAllCookies();
+        } else {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+            System.out.println("USING CHROME as default");
         }
+        assert driver != null;
+        driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
     }
 
     //static method containing unique instance of driver provider

@@ -3,4 +3,4 @@ pages\BasePage.class
 driver\WebDriverProvider.class
 service\TestDataReader.class
 pages\RedditHomePage.class
-util\CommonConstants.class
+util\ScreenshotMaker.class

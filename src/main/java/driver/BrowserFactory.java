@@ -33,11 +33,10 @@ public abstract class BrowserFactory {
                 }
                 break;
             }
+            assert driver != null;
             driver.manage().window().maximize();
             driver.manage().deleteAllCookies();
         }
-
-
         System.out.println("LOG POINT- - - - - - - - - - - - - - - - - -" + browser + " driver was created in factory class. passed to driver provider class...");
         return driver;
     }

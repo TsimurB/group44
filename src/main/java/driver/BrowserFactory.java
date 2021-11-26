@@ -12,7 +12,7 @@ public abstract class BrowserFactory {
     public WebDriver createDriver() {
         String browser = System.getProperty("browser");
 
-        if (driver == null) {
+        if (browser != null) {
             switch (browser) {
                 case "firefox": {
                     WebDriverManager.firefoxdriver().setup();

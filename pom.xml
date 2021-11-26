@@ -9,8 +9,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <!--        <maven.compiler.source>11</maven.compiler.source>-->
-        <!--        <maven.compiler.target>11</maven.compiler.target>-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <assertj-core.version>3.19.0</assertj-core.version>
         <selenium-java.version>3.141.0</selenium-java.version>
@@ -18,7 +16,7 @@
         <selenide.version>5.2.8</selenide.version>
         <hamcrest.version>2.1</hamcrest.version>
         <commons-io.version>2.6</commons-io.version>
-        <log4j-api.version>2.11.1</log4j-api.version>
+        <log4j-api.version>2.14.1</log4j-api.version>
         <log4j-core.version>2.14.1</log4j-core.version>
         <slf4j-api.version>1.7.32</slf4j-api.version>
         <slf4j-log4j12.version>1.7.5</slf4j-log4j12.version>
@@ -36,6 +34,7 @@
                 <version>2.22.1</version>
                 <configuration>
                     <suiteXmlFiles>
+                        <!--suppress UnresolvedMavenProperty -->
                         <suiteXmlFile>src/test/resources/${suite}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
@@ -113,16 +112,6 @@
             <artifactId>junit-jupiter</artifactId>
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>3.6.1</version>
-        </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-maven</artifactId>
-            <version>${allure-maven.version}</version>
         </dependency>
     </dependencies>
 

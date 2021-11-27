@@ -1,4 +1,4 @@
-import driver.WebDriverProvider;
+import driver.DriverSingleton;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.ITestResult;
@@ -18,7 +18,7 @@ public class BaseTest {
 
     @AfterSuite(alwaysRun = true)
     public void teardown() {
-        WebDriverProvider.closeDriver();
+        DriverSingleton.closeDriver();
         logger.info("end suite");
     }
 
@@ -26,9 +26,8 @@ public class BaseTest {
     public void failedTeardown(ITestResult result) {
         if (ITestResult.FAILURE == result.getStatus()) {
             ScreenshotMaker.captureScreenShot();
-            WebDriverProvider.closeDriver();
+            DriverSingleton.closeDriver();
             logger.error("test fails. screenshot was placed at target/screenshots/");
         }
-        logger.info("end testcase");
     }
 }

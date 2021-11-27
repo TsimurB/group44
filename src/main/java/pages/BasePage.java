@@ -6,9 +6,10 @@
 
 package pages;
 
-import driver.WebDriverProvider;
+import driver.DriverSingleton;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,17 +21,30 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public abstract class BasePage {
 
     protected WebDriver driver;
+    protected JavascriptExecutor js;
     private static final Logger logger = LogManager.getLogger();
     private final Integer TIMEOUT = 5;
 
 
     public BasePage() {
         try {
-            driver = WebDriverProvider.getDriver();
+            driver = DriverSingleton.getDriver();
+            js = (JavascriptExecutor) driver;
         } catch (Exception e) {
             logger.error("Driver issue!");
         }
         PageFactory.initElements(driver, this);
+    }
+
+    public BasePage scrollToView(WebElement element) {
+        (js).executeScript("arguments[0].scrollIntoView(true);", element);
+        return this;
+    }
+
+    public BasePage switchFrame(WebElement element) {
+        scrollToView(element);
+        new WebDriverWait(driver, TIMEOUT).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(element));
+        return this;
     }
 
     public BasePage clickIn(WebElement element) {

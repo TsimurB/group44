@@ -1,6 +1,6 @@
 package util;
 
-import driver.WebDriverProvider;
+import driver.DriverSingleton;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -13,7 +13,7 @@ public class ScreenshotMaker {
 
     public static void captureScreenShot() {
         String fileName = new Date().toString().replace(":", "_").replace(" ", "_");
-        File src = ((TakesScreenshot) WebDriverProvider.getDriver()).getScreenshotAs(OutputType.FILE);
+        File src = ((TakesScreenshot) DriverSingleton.getDriver()).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(src, new File("target/screenshots/failed_" + fileName + ".png"));
         } catch (IOException e) {

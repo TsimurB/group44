@@ -1,6 +1,12 @@
-util\TestListeners.class
 pages\BasePage.class
-driver\WebDriverProvider.class
-service\TestDataReader.class
+exceptions\WrongBrowserException.class
+models\User.class
+steps\StepsFacade.class
 pages\RedditHomePage.class
+service\UserCreator.class
+util\TestListeners.class
+pages\RedditPostCreationPage.class
+driver\DriverFactory.class
+service\TestDataReader.class
+driver\DriverSingleton.class
 util\ScreenshotMaker.class

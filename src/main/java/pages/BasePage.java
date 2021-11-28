@@ -9,10 +9,8 @@ package pages;
 import driver.DriverSingleton;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.jsoup.Connection;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -72,6 +70,21 @@ public abstract class BasePage {
     public String waitForTextOf(WebElement element) {
         return new WebDriverWait(driver, TIMEOUT)
                 .until(ExpectedConditions.visibilityOf(element)).getText();
+    }
+
+    public WebElement waitForElement(WebElement element) {
+        return new WebDriverWait(driver, TIMEOUT)
+                .until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public WebDriverWait waiter() {
+        return new WebDriverWait(driver, TIMEOUT);
+    }
+
+    public BasePage waitForTextChange(String xPath, String checker) {
+        WebDriverWait wait = new WebDriverWait(driver,TIMEOUT);
+                wait.until(ExpectedConditions.invisibilityOfElementWithText(By.xpath(xPath), checker));
+                return this;
     }
 
 }

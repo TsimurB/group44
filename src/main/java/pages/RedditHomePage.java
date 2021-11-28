@@ -1,6 +1,7 @@
 package pages;
 
 import models.User;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -69,15 +70,20 @@ public class RedditHomePage extends BasePage {
         switchFrame(loginFrame)
                 .fillIn(usernameTextarea, user.getName())
                 .fillIn(passwordTextarea, user.getPass())
-                .clickIn(loginSubmitButton);
+                .pressEnter(passwordTextarea);
+//                .clickIn(loginSubmitButton);
         driver.switchTo().defaultContent();
         return this;
     }
 
     public RedditHomePage logout() {
-        if (coinPurchaseButton.isDisplayed()) {
-            clickIn(userMenuDropdown)
-                    .clickIn(logoutSelection);
+        try {
+            if (coinPurchaseButton.isDisplayed()) {
+                clickIn(userMenuDropdown)
+                        .clickIn(logoutSelection);
+            }
+        } catch (NoSuchElementException e) {
+            return this;
         }
         return this;
     }

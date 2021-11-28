@@ -17,7 +17,9 @@ public class DriverSingleton {
         return driver;
     }
     public static void closeDriver() {
-        driver.quit();
-        driver = null;
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 }

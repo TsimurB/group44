@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 public class RedditPostCreationPage extends BasePage {
 
     private final static String DRAFTTITLE = "myTitle";
-
+    private static String initialDraftsCounter;
     private final static String POSTCREATIONURL = "https://www.reddit.com/submit";
 
     @FindBy(xpath = "//textarea[@placeholder='Title']")
@@ -24,8 +24,12 @@ public class RedditPostCreationPage extends BasePage {
     @FindBy(xpath = "//button[contains (text(),'Drafts')]")
     private WebElement draftsButton;
 
+    @FindBy(xpath = "//button[contains (text(),'Drafts')]/span")
+    private WebElement draftsCounter;
+
     public RedditPostCreationPage typeTitle() {
         fillIn(postTitleTextarea, DRAFTTITLE);
+        initialDraftsCounter = draftsCounter.getText();
         return this;
     }
 
@@ -40,12 +44,20 @@ public class RedditPostCreationPage extends BasePage {
     }
 
     public RedditPostCreationPage pressDraftsButton() {
+
+        waitForTextChange("//button[contains (text(),'Drafts')]/span",initialDraftsCounter);
         clickIn(draftsButton);
         return this;
     }
 
+    public boolean checkIfDraftCounterIntact() {
+        waiter();
+        return draftsCounter.getText().contains(initialDraftsCounter);
+    }
+
     public boolean checkIfDraftExists() {
-        String checker = waitForTextOf(draftListLine);
+        waiter();
+        String checker = draftListLine.getText();
         return checker.contains(DRAFTTITLE);
     }
 

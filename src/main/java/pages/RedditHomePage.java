@@ -71,6 +71,7 @@ public class RedditHomePage extends BasePage {
                 .fillIn(usernameTextarea, user.getName())
                 .fillIn(passwordTextarea, user.getPass())
                 .pressEnter(passwordTextarea);
+//                  trouble in Firefox with
 //                .clickIn(loginSubmitButton);
         driver.switchTo().defaultContent();
         return this;

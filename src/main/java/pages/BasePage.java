@@ -1,15 +1,8 @@
-/**
- * An abstract page class to inherit page classes from.
- * Contains driver instance to pass further.
- * Contains set of custom methods to manipulate webelements.
- */
-
 package pages;
 
 import driver.DriverSingleton;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.jsoup.Connection;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;

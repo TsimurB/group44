@@ -1,4 +1,6 @@
 import models.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.RedditHomePage;
@@ -13,31 +15,31 @@ public class SmokeTests extends BaseTest {
     private final StepsFacade stepsFacade = new StepsFacade();
 
 
-//    @Test
-//    public void canNavigateToRedditHomePageTest() {
-//        redditHomePage
-//                .goToHomePage();
-//        Assert.assertTrue(redditHomePage.checkIfIsRedditHomePage(), "This is not a reddit.com !");
-//    }
-//
-//    @Test
-//    public void canUseSearchBarForCustomQueriesTest() {
-//        redditHomePage
-//                .goToHomePage()
-//                .useSearchBar()
-//                .makeSearchQuery();
-//        Assert.assertTrue(redditHomePage.checkIfSearchSucceed(), "Search failed!");
-//    }
-//
-//    @Test(priority = 1)
-//    public void canLoginWithValidCredentialsTest() {
-//        User validTestUser = UserCreator.withNameAndPass();
-//        redditHomePage
-//                .goToHomePage()
-//                .pressLoginButton()
-//                .processLogin(validTestUser);
-//        Assert.assertTrue(redditHomePage.checkIfUserIsLoggedIn(), "Login failed!");
-//    }
+    @Test
+    public void canNavigateToRedditHomePageTest() {
+        redditHomePage
+                .goToHomePage();
+        Assert.assertTrue(redditHomePage.checkIfIsRedditHomePage(), "This is not a reddit.com !");
+    }
+
+    @Test
+    public void canUseSearchBarForCustomQueriesTest() {
+        redditHomePage
+                .goToHomePage()
+                .useSearchBar()
+                .makeSearchQuery();
+        Assert.assertTrue(redditHomePage.checkIfSearchSucceed(), "Search failed!");
+    }
+
+    @Test(priority = 1)
+    public void canLoginWithValidCredentialsTest() {
+        User validTestUser = UserCreator.withNameAndPass();
+        redditHomePage
+                .goToHomePage()
+                .pressLoginButton()
+                .processLogin(validTestUser);
+        Assert.assertTrue(redditHomePage.checkIfUserIsLoggedIn(), "Login failed!");
+    }
 
     @Test(priority = 2)
     public void canPostDraftsTest() {
@@ -48,6 +50,6 @@ public class SmokeTests extends BaseTest {
         Assert.assertFalse(redditPostCreationPage.checkIfDraftCounterIntact(), "No draft is added!");
         redditPostCreationPage
                 .pressDraftsButton();
-        Assert.assertTrue(redditPostCreationPage.checkIfDraftExists(), "No such draft!");
+//        Assert.assertTrue(redditPostCreationPage.checkIfDraftExists(), "No such draft!");
     }
 }

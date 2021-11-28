@@ -2,6 +2,8 @@ package util;
 
 import driver.DriverSingleton;
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
@@ -14,15 +16,19 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class TestListeners implements ITestListener {
-    public void onTestStart(ITestResult iTestResult) {
 
+    private static final Logger logger = LogManager.getLogger();
+
+    public void onTestStart(ITestResult iTestResult) {
+        logger.info(iTestResult.getName() + " start");
     }
 
     public void onTestSuccess(ITestResult iTestResult) {
-
+        logger.info(iTestResult.getName() + " passed");
     }
 
     public void onTestFailure(ITestResult iTestResult) {
+        logger.error(iTestResult.getName() + " failed");
         saveScreenshot();
     }
 

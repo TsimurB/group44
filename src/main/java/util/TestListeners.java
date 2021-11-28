@@ -28,7 +28,7 @@ public class TestListeners implements ITestListener {
     }
 
     public void onTestFailure(ITestResult iTestResult) {
-        logger.error(iTestResult.getName() + " failed");
+        logger.error(iTestResult.getName() + " failed. Screenshot was placed at target/screenshots/");
         saveScreenshot();
     }
 

@@ -23,12 +23,10 @@ public class BaseTest {
         logger.info("end suite");
     }
 
-    @AfterMethod
-    public void failedTeardown(ITestResult result) {
-        if (ITestResult.FAILURE == result.getStatus()) {
-            ScreenshotMaker.captureScreenShot();
-            DriverSingleton.closeDriver();
-            logger.error("test fails. screenshot was placed at target/screenshots/");
-        }
-    }
+//    @AfterMethod
+//    public void failedTeardown(ITestResult result) {
+//        if (ITestResult.FAILURE == result.getStatus()) {
+//            DriverSingleton.closeDriver();
+//        }
+//    }
 }

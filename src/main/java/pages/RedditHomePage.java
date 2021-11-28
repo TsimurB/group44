@@ -42,11 +42,15 @@ public class RedditHomePage extends BasePage {
     private WebElement logoutSelection;
 
     @FindBy(xpath = "//input[@name='createPost']")
+    private WebElement createPostTextarea;
+
+    @FindBy(xpath = "//a[@role='button' and contains (text(),'Create Post')]")
     private WebElement createPostButton;
 
 
     public RedditHomePage goToHomePage() {
         driver.get(HOMEURL);
+        this.logout();
         return this;
     }
 
@@ -71,8 +75,6 @@ public class RedditHomePage extends BasePage {
                 .fillIn(usernameTextarea, user.getName())
                 .fillIn(passwordTextarea, user.getPass())
                 .pressEnter(passwordTextarea);
-//                  trouble in Firefox with
-//                .clickIn(loginSubmitButton);
         driver.switchTo().defaultContent();
         return this;
     }
@@ -102,13 +104,13 @@ public class RedditHomePage extends BasePage {
 
     public boolean checkIfSearchSucceed() {
         String expected = "Sort";
-        String checker = waitForTextOf(sortResultsButton);
+        String checker = waitForElement(sortResultsButton).getText();
         return checker.contains(expected);
     }
 
     public boolean checkIfUserIsLoggedIn() {
-        String expected = "Coin Sale";
-        String checker = waitForTextOf(coinPurchaseButton);
+        String expected = "Create Post";
+        String checker = waitForTextOf(createPostButton);
         return checker.contains(expected);
     }
 

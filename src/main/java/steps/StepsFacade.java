@@ -12,7 +12,6 @@ public class StepsFacade {
     public StepsFacade completePrerequisitesForPosting(User user) {
         homePage
                 .goToHomePage()
-                .logout()
                 .pressLoginButton()
                 .processLogin(user)
                 .pressCreatePostButton();

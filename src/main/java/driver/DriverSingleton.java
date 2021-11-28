@@ -13,6 +13,7 @@ public class DriverSingleton {
         if (driver == null) {
             driver = DriverFactory.create();
             driver.manage().window().maximize();
+            driver.manage().deleteAllCookies();
         }
         return driver;
     }

@@ -1,6 +1,4 @@
 import models.User;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.RedditHomePage;
@@ -48,8 +46,5 @@ public class SmokeTests extends BaseTest {
                 .completePrerequisitesForPosting(validTestUser)
                 .createDraft();
         Assert.assertFalse(redditPostCreationPage.checkIfDraftCounterIntact(), "No draft is added!");
-        redditPostCreationPage
-                .pressDraftsButton();
-//        Assert.assertTrue(redditPostCreationPage.checkIfDraftExists(), "No such draft!");
     }
 }
